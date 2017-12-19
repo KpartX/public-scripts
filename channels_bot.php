@@ -22,7 +22,7 @@ switch ($message) {
         $reply =  "Under maintenance";
         break;
     case "help":
-        $reply =  "Type only channels number to obtain their status";
+        $reply =  "Type the channel number to obtain its status";
         break;
     default:
         $reply =  "No such channel";
