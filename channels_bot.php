@@ -20,7 +20,7 @@ switch ($message) {
     case "1551":
         $reply =  "Active";
         break;
-    case "1122":
+    case "1552":
         $reply =  "Down";
         break;
     case "1144":
