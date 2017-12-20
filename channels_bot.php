@@ -40,7 +40,7 @@ file_get_contents(urlencode($sendto));
 checkJSON($chatID,$update);
 function checkJSON($chatID,$update){
 
-    $myFile = "channels_bot_log.txt";
+    $myFile = "channels_bot.log";
     $updateArray = print_r($update,TRUE);
     $fh = fopen($myFile, 'a') or die("can't open file");
     fwrite($fh, $chatID ."nn");
@@ -80,7 +80,7 @@ function http_get_contents($url)
 
 function log2($text){
 
-    $myFile = "channels_bot_log2.txt";
+    $myFile = "channels_bot2.log";
     
     $fh = fopen($myFile, 'a') or die("can't open file");
     fwrite($fh, $text);
