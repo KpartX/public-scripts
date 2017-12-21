@@ -4,7 +4,7 @@
 
 define('BOT_TOKEN', '503130623:AAE5Kt2SA7dibpNETFYBkDQVrgGrQV6_TZM');
 define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
-define('CH_STATUS' 'http://static.apollogroup.tv/channels.json');
+define('CH_STATUS', 'http://static.apollogroup.tv/channels.json');
 
 // read channels status
 $chContent  = file_get_contents(CH_STATUS);
@@ -16,20 +16,23 @@ $update     = json_decode($content, true);
 $chatID     = $update["message"]["chat"]["id"];
 $message    = $update["message"]["text"];
 
+// retrieving channel status
+$status = $message;
+foreach($chJson as $key => $val) {
+    if ($key == $message)
+    {
+       $status = $val;
+       break;
+    }
+}
 // compose reply
 $reply ="";
-switch ($message) {
-    case "1550":
-        $reply =  "Source issue";
+switch ($status) {
+    case "0":
+        $reply =  "Source problem";
         break;
-    case "1551":
+    case "1":
         $reply =  "Active";
-        break;
-    case "1552":
-        $reply =  "Down";
-        break;
-    case "1144":
-        $reply =  "Under maintenance";
         break;
     default:
         $reply =  "No such channel";
@@ -61,10 +64,6 @@ function checkChJson($chJson){
     $fh = fopen($myFile, 'a') or die("can't open file");
     fwrite($fh, $updateArray."nn");
     fclose($fh);
-
-    //foreach( $json as $channel => $status ){
-    //echo $channel."\t=>\t".$status."\n";
-}
 }
 
 function http_get_contents($url)
