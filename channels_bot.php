@@ -35,7 +35,7 @@ $sendto =API_URL."sendmessage?chat_id=".$chatID."&text=".$reply;
 file_get_contents(urlencode($sendto));
 //http_get_contents($sendto);
 
-// Create a debug log.txt to check the response/repy from Telegram in JSON format.
+// Create a debug channels_bot.log to check the response/repy from Telegram in JSON format.
 // You can disable it by commenting checkJSON.
 checkJSON($chatID,$update);
 function checkJSON($chatID,$update){
