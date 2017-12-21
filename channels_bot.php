@@ -4,6 +4,11 @@
 
 define('BOT_TOKEN', '503130623:AAE5Kt2SA7dibpNETFYBkDQVrgGrQV6_TZM');
 define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
+define('CH_STATUS' 'http://static.apollogroup.tv/channels.json');
+
+// read channels status
+$chContent  = file_get_contents(CH_STATUS);
+$chJson     = json_decode($chContent, true);
 
 // read incoming info and grab the chatID
 $content    = file_get_contents("php://input");
@@ -46,6 +51,20 @@ function checkJSON($chatID,$update){
     fwrite($fh, $chatID ."nn");
     fwrite($fh, $updateArray."nn");
     fclose($fh);
+}
+
+checkChJson($chJson);
+function checkChJson($chJson){
+
+    $myFile = "channels_status.log";
+    $updateArray = print_r($chJson,TRUE);
+    $fh = fopen($myFile, 'a') or die("can't open file");
+    fwrite($fh, $updateArray."nn");
+    fclose($fh);
+
+    //foreach( $json as $channel => $status ){
+    //echo $channel."\t=>\t".$status."\n";
+}
 }
 
 function http_get_contents($url)
