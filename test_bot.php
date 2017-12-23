@@ -8,7 +8,7 @@ define('CH_STATUS', 'http://static.apollogroup.tv/channels.json');
 
 ini_set("allow_url_fopen", 1);
 
-$command = escapeshellcmd('https://friendly-signaler.000webhostapp.com/keyboard.py');
+$command = escapeshellcmd('https://api.telegram.org/simple_keyboard.py');
 $output = shell_exec($command);
 echo $output;
 
