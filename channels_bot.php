@@ -1,6 +1,6 @@
 <?php
  
-phpinfo();
+//phpinfo();
 
 define('BOT_TOKEN', '503130623:AAE5Kt2SA7dibpNETFYBkDQVrgGrQV6_TZM');
 define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
@@ -56,7 +56,7 @@ function checkJSON($chatID,$update){
     fclose($fh);
 }
 
-checkChJson($chJson);
+/*checkChJson($chJson);
 function checkChJson($chJson){
 
     $myFile = "channels_status.log";
@@ -64,7 +64,7 @@ function checkChJson($chJson){
     $fh = fopen($myFile, 'a') or die("can't open file");
     fwrite($fh, $updateArray."nn");
     fclose($fh);
-}
+}*/
 
 function http_get_contents($url)
 {
